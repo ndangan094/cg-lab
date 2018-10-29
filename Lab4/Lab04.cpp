@@ -1,4 +1,3 @@
-/* -- INCLUDE FILES ------------------------------------------------------ */
 #include <gl/gl.h>
 #include <gl/glu.h>
 #include <gl/glut.h>
@@ -58,10 +57,6 @@ void display(void)
    glTexCoord2f(1.0, 1.0); glVertex3f(0.0, 1.0, 0.0);
    glTexCoord2f(1.0, 0.0); glVertex3f(0.0, -1.0, 0.0);
 
-   /*glTexCoord2f(0.0, 0.0); glVertex3f(1.0, -1.0, 0.0);
-   glTexCoord2f(0.0, 1.0); glVertex3f(1.0, 1.0, 0.0);
-   glTexCoord2f(1.0, 1.0); glVertex3f(2.41421, 1.0, -1.41421);
-   glTexCoord2f(1.0, 0.0); glVertex3f(2.41421, -1.0, -1.41421);*/
    glEnd();
    glFlush();
    glDisable(GL_TEXTURE_2D);

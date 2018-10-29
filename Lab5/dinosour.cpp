@@ -1,31 +1,9 @@
-/* Module      : MainFile.cpp
- * Author      : 
- * Email       : 
- * Course      : Computer Graphics
- *
- * Description : 
- *
- *
- * Date        : 
- *
- * History:
- * Revision      Date          Changed By
- * --------      ----------    ----------
- * 01.00         ?????          ???
- * First release.
- *
- */
-/* -- INCLUDE CPP ----------------------------------------------------------*/
 #include <iostream>
 #include <fstream>
-
-/* -- INCLUDE FILES ------------------------------------------------------ */
 #include <GL/glut.h>
 
 using namespace std;
 
-/* -- DATA STRUCTURES ---------------------------------------------------- */
-// Our point class.
 class GLintPoint  {
 
       
@@ -38,42 +16,14 @@ typedef struct Piece {
     GLdouble* _y;
 } Piece;
 
-/* -- GLOBAL VARIABLES --------------------------------------------------- */
 int numOfSector;
 Piece *pieces;  
 
-/* -- LOCAL VARIABLES ---------------------------------------------------- */
-
-//thuvh load file
 void loadFile (string name);
      
-
-
-/* ----------------------------------------------------------------------- */
-/* Function    : void drawDot( GLint x, GLint y )
- *
- * Description : Draw a point at location (x, y) in the window.
- *
- * Parameters  : GLint x : X coordinate of point to draw.
- *               GLint y : X coordinate of point to draw.
- *
- * Returns     : void
- */
-
 void drawDot( GLint x, GLint y )  {
 
 }
-
-/* ----------------------------------------------------------------------- */
-/* Function    : void myInit( void )
- *
- * Description : Initialize OpenGL and the window where things will be
- *               drawn.
- *
- * Parameters  : void
- *
- * Returns     : void
- */
 
 void myInit( void )  {
   glClearColor( 1.0, 1.0, 1.0, 0.0 );
@@ -84,18 +34,6 @@ void myInit( void )  {
   gluOrtho2D( 0.0, 700.0, 0.0, 600.0 );
 
 }
-
-
-/* ----------------------------------------------------------------------- */
-/* Function    : void myDisplay( void )
- *
- * Description : This function gets called everytime the window needs to
- *               be redrawn.
- *
- * Parameters  : void
- *
- * Returns     : void
- */
 
 void thuvh_display2 ( void ){
      glClear (GL_COLOR_BUFFER_BIT );
@@ -121,9 +59,6 @@ void thuvh_display ( Piece p ){
   for (int i = 0; i < n; i++){
       glVertex2f (p._x[i], p._y[i]);
   }
-  
-//  glVertex2f (p._x[0], p._y[0]);
-  
   glEnd();
 
 }
@@ -131,19 +66,9 @@ void thuvh_display ( Piece p ){
 
 
 void myDisplay( void )  {
-     // comment for viewport
-//  glClear( GL_COLOR_BUFFER_BIT );
-//  glBegin (GL_LINE_STRIP);
-//  glVertex2i (100, 50);
-//  glVertex2i (100, 130);
-//  glVertex2i (150, 130);
-//  glVertex2i (100, 50);
   for (int i = 0; i < numOfSector; i++){
       thuvh_display (pieces[i]);
   }    
-//  glEnd();
-// comment for viewport
-//  glFlush(); 
 }
 
 void tillThuvh ( void ){
@@ -159,45 +84,20 @@ void tillThuvh ( void ){
      glFlush ();    
 }
 
-/* ----------------------------------------------------------------------- */
-/* Function    : int main( int argc, char** argv )
- *
- * Description : This is the main function. It sets up the rendering
- *               context, and then reacts to user events.
- *
- * Parameters  : int argc     : Number of command-line arguments.
- *               char *argv[] : Array of command-line arguments.
- *
- * Returns     : int : Return code to pass to the shell.
- */
-
 int main( int argc, char *argv[] )  {
   
-  //load data
   loadFile("dinosaur.dat");
-  // Initialize GLUT.
   glutInit( &argc, argv );
-  // Set the mode to draw in.
   glutInitDisplayMode( GLUT_SINGLE | GLUT_RGB );
-  // Set the window size in screen pixels.
   glutInitWindowSize( 640, 480 );
-  // Set the window position in screen pixels.
   glutInitWindowPosition( 100, 150 );
-  // Create the window.
   glutCreateWindow( "Lab" );
-  // Set the callback funcion to call when we need to draw something.
- // glutDisplayFunc( myDisplay );
-  //glutDisplayFunc( tillThuvh );
   glutDisplayFunc (thuvh_display2);
-  // Initialize some things.
   myInit( );
-  // Now that we have set everything up, loop responding to events.
   glutMainLoop( );
 
 
 }
-
-/* ----------------------------------------------------------------------- */
 
 
 void loadFile (string name){
